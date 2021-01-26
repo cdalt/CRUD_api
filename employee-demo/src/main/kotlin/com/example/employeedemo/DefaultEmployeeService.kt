@@ -10,7 +10,7 @@ class DefaultEmployeeService: EmployeeService {
     }
 
     override fun findAllEmployees(): List<Employee> {
-        return listOf(Employee("Dalton", 30, true, null))
+        return listOf(Employee(1,"Dalton", 30, true, null))
     }
 
 }
