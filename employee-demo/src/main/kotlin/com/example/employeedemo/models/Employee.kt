@@ -6,6 +6,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "employees")
+// plural for tables
 
 data class Employee (
     @Id
@@ -14,4 +15,3 @@ data class Employee (
     val salary: Int = -1,
     val married: Boolean = false,
     val sex: String? = null)
-
