@@ -5,13 +5,13 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 
 data class Employee (
     @Id
     val id: Long = -1,
-    val name: String,
-    val salary: Int,
-    val married: Boolean,
-    val sex: String?)
+    val name: String = "",
+    val salary: Int = -1,
+    val married: Boolean = false,
+    val sex: String? = null)
 
