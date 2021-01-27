@@ -1,16 +1,39 @@
 package com.example.employeedemo
 
 import com.example.employeedemo.models.Employee
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import javax.persistence.Id
 
 @Service
 class DefaultEmployeeService: EmployeeService {
-    override fun findByName(name: String): Employee? {
-        TODO("Not yet implemented")
+
+    @Autowired
+    lateinit var repository: EmployeeRepository
+
+    override fun findEmployeeById(employeeId: Long): Employee? {
+        val repositoryEmployee = repository.findById(employeeId)
+        if (repositoryEmployee.isPresent){
+            return repositoryEmployee.get()
+        }
+        return null
     }
 
-    override fun findAllEmployees(): List<Employee> {
-        return listOf(Employee("Dalton", 30, true, null))
+    override fun findAllEmployees(): Iterable<Employee> {
+        return repository.findAll()
+    }
+
+    override fun createEmployee(employee: Employee): String {
+        repository.save(
+            Employee(
+                employee.id,
+                employee.name,
+                employee.salary,
+                employee.married,
+                employee.sex
+            )
+        )
+        return "done"
     }
 
 }
