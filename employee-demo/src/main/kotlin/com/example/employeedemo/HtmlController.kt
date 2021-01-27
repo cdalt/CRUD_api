@@ -23,4 +23,10 @@ class HtmlController(private val service: EmployeeService) {
     fun getEmployeeByName(@PathVariable employeeId: Long): Employee? {
         return service.findEmployeeById(employeeId)
     }
+    @DeleteMapping("{employeeId}")
+    fun deleteEmployeeById(@PathVariable employeeId: Long): Employee {
+        return service.deleteEmployee(employeeId)
+    }
+    @PutMapping
+
 }
