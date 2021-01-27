@@ -27,6 +27,9 @@ class HtmlController(private val service: EmployeeService) {
     fun deleteEmployeeById(@PathVariable employeeId: Long): Employee {
         return service.deleteEmployee(employeeId)
     }
-    @PutMapping
+    @PutMapping("{employeeId}")
+    fun updateEmployeeSalaryById(employeeId: Long): Employee {
+        return service.updateEmployeeSalary(employeeId)
+    }
 
 }
