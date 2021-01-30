@@ -9,3 +9,5 @@ class EmployeeDemoApplication
 fun main(args: Array<String>) {
 	runApplication<EmployeeDemoApplication>(*args)
 }
+
+// To Do: Write down 3 ways i could improve on them
