@@ -7,6 +7,3 @@ salary VARCHAR(250) NOT NULL,
 married VARCHAR(250) NOT NULL,
 sex VARCHAR(250)
 );
-
-UPDATE employees SET salary = "30000" WHERE salary = '25000';
-DELETE FROM employees WHERE id = 1;

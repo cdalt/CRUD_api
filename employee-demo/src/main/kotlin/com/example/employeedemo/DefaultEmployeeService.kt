@@ -33,7 +33,22 @@ class DefaultEmployeeService: EmployeeService {
                 employee.sex
             )
         )
+
         return "done"
     }
 
+    override fun updateEmployee(employee: Employee): Employee {
+        return repository.save(Employee(
+            employee.id,
+            employee.name,
+            employee.salary,
+            employee.married,
+            employee.sex
+        ))
+    }
+
+    override fun deleteEmployee(employeeId: Long): String {
+        repository.deleteById(employeeId)
+        return "deleted"
+    }
 }

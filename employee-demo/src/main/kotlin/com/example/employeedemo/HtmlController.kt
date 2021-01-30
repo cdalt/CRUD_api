@@ -19,17 +19,17 @@ class HtmlController(private val service: EmployeeService) {
         return service.createEmployee(employeeRequest)
     }
 
-    @GetMapping("{employeeId}")
+    @GetMapping("/{employeeId}")
     fun getEmployeeByName(@PathVariable employeeId: Long): Employee? {
         return service.findEmployeeById(employeeId)
     }
-    @DeleteMapping("{employeeId}")
-    fun deleteEmployeeById(@PathVariable employeeId: Long): Employee {
+    @DeleteMapping("/{employeeId}")
+    fun deleteEmployeeById(@PathVariable employeeId: Long): String {
         return service.deleteEmployee(employeeId)
     }
-    @PutMapping("{employeeId}")
-    fun updateEmployeeSalaryById(employeeId: Long): Employee {
-        return service.updateEmployeeSalary(employeeId)
+    @PutMapping(consumes = ["application/json"])
+    fun updateEmployee(@RequestBody employeeRequest: Employee): Employee {
+        return service.updateEmployee(employeeRequest)
     }
 
 }
