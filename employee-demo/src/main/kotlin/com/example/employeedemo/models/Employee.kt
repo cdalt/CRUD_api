@@ -14,4 +14,5 @@ data class Employee (
     val name: String = "",
     val salary: Int = -1,
     val married: Boolean = false,
-    val sex: String? = null)
+    val sex: String? = null
+)

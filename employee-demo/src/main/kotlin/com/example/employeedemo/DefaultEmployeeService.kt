@@ -3,13 +3,12 @@ package com.example.employeedemo
 import com.example.employeedemo.models.Employee
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import javax.persistence.Id
 
 @Service
 class DefaultEmployeeService: EmployeeService {
 
     @Autowired
-    lateinit var repository: EmployeeRepository
+    lateinit var repository: Repositories
 
     override fun findEmployeeById(employeeId: Long): Employee? {
         val repositoryEmployee = repository.findById(employeeId)
