@@ -1,22 +1,26 @@
 package com.example.employeedemo
 
 import com.example.employeedemo.models.Employee
-import org.aspectj.apache.bcel.Repository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.ui.Model
+import com.example.employeedemo.service.EmployeeService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/employees")
 class HtmlController(private val service: EmployeeService) {
 
+    val regex = "^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+\$".toRegex()
+
     @GetMapping(produces = ["application/json"])
     fun listEmployees(): Iterable<Employee> {
         return service.findAllEmployees()
     }
     @PostMapping(consumes = ["application/json"])
-    fun save(@RequestBody employeeRequest: Employee): String{
-        return service.createEmployee(employeeRequest)
+    fun save(@RequestBody employeeRequest: Employee): String {
+        return if (regex.matchEntire(employeeRequest.email) != null){
+            service.createEmployee(employeeRequest)
+        } else {
+            "Not a valid Email"
+        }
     }
 
     @GetMapping("/{employeeId}")
@@ -28,8 +32,12 @@ class HtmlController(private val service: EmployeeService) {
         return service.deleteEmployee(employeeId)
     }
     @PutMapping(consumes = ["application/json"])
-    fun updateEmployee(@RequestBody employeeRequest: Employee): Employee {
-        return service.updateEmployee(employeeRequest)
+    fun updateEmployee(@RequestBody employeeRequest: Employee): String {
+        return if (regex.matchEntire(employeeRequest.email) != null) {
+            service.updateEmployee(employeeRequest)
+            "Saved Employee"
+        } else {
+            "Employee did not update"
+        }
     }
-
 }
