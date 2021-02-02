@@ -1,4 +1,4 @@
-package com.example.employeedemo
+package com.example.employeedemo.service
 
 import com.example.employeedemo.models.Employee
 

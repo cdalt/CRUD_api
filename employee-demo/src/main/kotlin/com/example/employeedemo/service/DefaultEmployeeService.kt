@@ -1,5 +1,6 @@
-package com.example.employeedemo
+package com.example.employeedemo.service
 
+import com.example.employeedemo.Repositories
 import com.example.employeedemo.models.Employee
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -29,7 +30,8 @@ class DefaultEmployeeService: EmployeeService {
                 employee.name,
                 employee.salary,
                 employee.married,
-                employee.sex
+                employee.sex,
+                employee.email
             )
         )
 
@@ -42,7 +44,8 @@ class DefaultEmployeeService: EmployeeService {
             employee.name,
             employee.salary,
             employee.married,
-            employee.sex
+            employee.sex,
+            employee.email
         ))
     }
 

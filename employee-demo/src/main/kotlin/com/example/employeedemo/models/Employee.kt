@@ -1,5 +1,6 @@
 package com.example.employeedemo.models
 
+import org.intellij.lang.annotations.Pattern
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -14,5 +15,6 @@ data class Employee (
     val name: String = "",
     val salary: Int = -1,
     val married: Boolean = false,
-    val sex: String? = null
+    val sex: String? = null,
+    val email: String = "",
 )
