@@ -24,8 +24,15 @@ class HtmlController(private val service: EmployeeService) {
     }
 
     @GetMapping("/{employeeId}")
-    fun getEmployeeByName(@PathVariable employeeId: Long): Employee? {
+    fun getEmployeeById(@PathVariable employeeId: Long): Employee? {
         return service.findEmployeeById(employeeId)
+        val employee: Employee? = null
+        try {
+            employee = service.findEmployeeById(employeeId)
+        } catch (e:Exception){
+            println(e)
+        }
+        return employee
     }
     @DeleteMapping("/{employeeId}")
     fun deleteEmployeeById(@PathVariable employeeId: Long): String {
