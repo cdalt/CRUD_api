@@ -15,8 +15,9 @@ class DefaultEmployeeService: EmployeeService {
         val repositoryEmployee = repository.findById(employeeId)
         if (repositoryEmployee.isPresent){
             return repositoryEmployee.get()
+        } else {
+            throw Exception("Employee not found")
         }
-        return null
     }
 
     override fun findAllEmployees(): Iterable<Employee> {
