@@ -25,8 +25,8 @@ class HtmlController(private val service: EmployeeService) {
 
     @GetMapping("/{employeeId}")
     fun getEmployeeById(@PathVariable employeeId: Long): Employee? {
-        return service.findEmployeeById(employeeId)
-        val employee: Employee? = null
+//        return service.findEmployeeById(employeeId)
+        var employee: Employee? = null
         try {
             employee = service.findEmployeeById(employeeId)
         } catch (e:Exception){

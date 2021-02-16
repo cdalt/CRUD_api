@@ -1,6 +1,6 @@
 package com.example.employeedemo.service
 
-import com.example.employeedemo.Repositories
+import com.example.employeedemo.EmployeeRepository
 import com.example.employeedemo.models.Employee
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 class DefaultEmployeeService: EmployeeService {
 
     @Autowired
-    lateinit var repository: Repositories
+    lateinit var repository: EmployeeRepository
 
     override fun findEmployeeById(employeeId: Long): Employee? {
         val repositoryEmployee = repository.findById(employeeId)
